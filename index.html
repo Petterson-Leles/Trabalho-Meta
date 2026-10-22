@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Museu dos Smartphones</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Museu dos Smartphones — Uma Viagem no Tempo. Exposição digital interativa da META Escola Técnica (Arquitetura de Computadores).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#exposicao">Pular para a exposição</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#inicio" aria-label="Museu dos Smartphones — início">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Museu dos Smartphones</span>
+    </a>
+    <nav aria-label="Seções">
+      <a href="#exposicao">Exposição</a>
+      <a href="#linha">Linha do tempo</a>
+      <a href="#comparar">Comparar</a>
+      <a href="#por-dentro">Por dentro</a>
+      <a href="#ia">IA</a>
+      <a href="#fontes">Fontes</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero wrap">
+    <p class="eyebrow">META Escola Técnica · Arquitetura de Computadores</p>
+    <h1>Museu dos Smartphones <span>Uma Viagem no Tempo</span></h1>
+    <p class="lead">Descubra como os celulares evoluíram até se tornarem computadores inteligentes.</p>
+  </section>
+
+  <!-- SALA 1: EXPOSIÇÃO / CARROSSEL -->
+  <section id="exposicao" class="exhibit" aria-labelledby="t-expo">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Sala 1</p>
+        <h2 id="t-expo">A exposição 🏛️</h2>
+        <p class="hint">Use as setas, deslize com o dedo ou escolha um ano. Toque em <b>Explorar aparelho</b> para girar o modelo em 3D.</p>
+      </div>
+    </div>
+    <div class="stage" id="stage" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Aparelhos em ordem cronológica. Use as setas do teclado para navegar.">
+      <div class="track" id="track"></div>
+      <button class="nav-btn prev" id="prev" aria-label="Aparelho anterior">‹</button>
+      <button class="nav-btn next" id="next" aria-label="Próximo aparelho">›</button>
+    </div>
+    <p class="sr-only" id="live" aria-live="polite"></p>
+
+    <div class="wrap">
+      <div id="linha" class="timeline" role="tablist" aria-label="Linha do tempo"></div>
+      <p class="note-3d">🧊 Os modelos 3D são <b>representações ilustrativas</b> criadas para este projeto, com proporções aproximadas. Não são réplicas exatas dos aparelhos.</p>
+    </div>
+  </section>
+
+  <!-- SALA 2: COMPARAÇÃO -->
+  <section id="comparar" class="wrap block" aria-labelledby="t-comp">
+    <div class="sec-head">
+      <p class="eyebrow">Sala 2</p>
+      <h2 id="t-comp">Comparação entre gerações ⚖️</h2>
+      <p class="hint">Escolha dois aparelhos. Quando um dado não tem fonte confiável, o museu avisa.</p>
+    </div>
+    <div class="cmp-pick">
+      <label>Aparelho A <select id="cmpA"></select></label>
+      <span class="vs" aria-hidden="true">×</span>
+      <label>Aparelho B <select id="cmpB"></select></label>
+    </div>
+    <div class="table-scroll"><table class="cmp" id="cmpTable"></table></div>
+
+    <div class="grid-2">
+      <figure class="panel lineup">
+        <img id="lineupImg" alt="Todos os aparelhos lado a lado, na mesma escala (ilustração 3D)." hidden>
+        <figcaption>Lado a lado, na mesma escala aproximada: do “tijolo” de 1994 ao aparelho fino de hoje. <i>Ilustração 3D.</i></figcaption>
+      </figure>
+      <figure class="panel ramchart">
+        <h3>Memória RAM ao longo do tempo</h3>
+        <div id="ramBars" class="bars"></div>
+        <figcaption>Escala logarítmica: cada linha de grade vale 10× a anterior. Valores das fontes de cada aparelho (BlackBerry: família Quark; Galaxy S III: versão com 2 GB).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SALA 3: POR DENTRO -->
+  <section id="por-dentro" class="wrap block" aria-labelledby="t-dentro">
+    <div class="sec-head">
+      <p class="eyebrow">Sala 3</p>
+      <h2 id="t-dentro">Como funciona um smartphone? ⚙️</h2>
+      <p class="hint">Toque em uma peça da placa para ver o que ela faz.</p>
+    </div>
+    <div class="inside">
+      <div class="board" id="board" aria-label="Ilustração simplificada dos componentes de um smartphone">
+        <button class="part p-touch" data-part="touch">👆 Tela touch</button>
+        <button class="part p-sensors" data-part="sensors">📡 Câmeras e sensores</button>
+        <div class="p-soc">
+          <button class="part p-socbtn" data-part="soc">SoC</button>
+          <button class="part mini" data-part="cpu">CPU</button>
+          <button class="part mini" data-part="gpu">GPU</button>
+          <button class="part mini" data-part="npu">NPU</button>
+        </div>
+        <button class="part p-ram" data-part="ram">🗂️ RAM</button>
+        <button class="part p-flash" data-part="flash">💾 Armazenamento</button>
+        <button class="part p-battery" data-part="battery">🔋 Bateria</button>
+      </div>
+      <article class="panel part-info" id="partInfo" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <!-- SALA 4: IA -->
+  <section id="ia" class="wrap block" aria-labelledby="t-ia">
+    <div class="sec-head">
+      <p class="eyebrow">Sala 4</p>
+      <h2 id="t-ia">A chegada da inteligência artificial 🤖</h2>
+      <p class="hint">Onde a IA “pensa”? No aparelho, na nuvem ou nos dois. Todos os exemplos abaixo já existem em produtos lançados.</p>
+    </div>
+    <div class="ai-tabs" role="tablist" aria-label="Tipos de IA" id="aiTabs"></div>
+    <article class="panel ai-panel" id="aiPanel" role="tabpanel"></article>
+    <div class="grid-2 now-next">
+      <div class="panel">
+        <h3>✅ Já disponível</h3>
+        <ul>
+          <li>Fotografia computacional e edição de fotos com IA</li>
+          <li>Tradução de chamadas e conversas</li>
+          <li>Transcrição e resumo de gravações e notas</li>
+          <li>Busca pelo que está na tela (Circle to Search)</li>
+          <li>Assistentes que entendem voz e texto</li>
+        </ul>
+      </div>
+      <div class="panel future">
+        <h3>🔮 Tendência (ainda não é realidade completa)</h3>
+        <ul>
+          <li>Assistentes que entendem o contexto de vários apps ao mesmo tempo</li>
+          <li>Modelos maiores rodando inteiramente no aparelho</li>
+          <li>Tarefas completas feitas pela IA com permissão do usuário</li>
+          <li>Chips mais eficientes para IA gastar menos bateria</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONTES -->
+  <section id="fontes" class="wrap block" aria-labelledby="t-fontes">
+    <div class="sec-head">
+      <p class="eyebrow">Arquivo do museu</p>
+      <h2 id="t-fontes">Fontes e referências 📚</h2>
+    </div>
+    <ol class="sources" id="sourceList"></ol>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><b>Museu dos Smartphones — Uma Viagem no Tempo</b> · META Escola Técnica · Arquitetura de Computadores · Trabalho de Petterson Leles · 22/10/2026</p>
+    <p>Modelos 3D: representações ilustrativas criadas para este projeto (Three.js), sem logotipos de marcas. Fotos: imagens de referência reunidas pelo autor para fins educacionais.</p>
+  </div>
+</footer>
+
+<!-- PAINEL DO APARELHO -->
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="dlg-in">
+    <button class="close" id="dlgClose" aria-label="Fechar e voltar ao carrossel">✕</button>
+    <div class="dlg-view">
+      <div class="viewer" id="viewer"></div>
+      <img class="viewer-photo" id="viewerPhoto" alt="" hidden>
+      <div class="viewer-tools" id="viewerTools">
+        <button data-act="front">Frente</button>
+        <button data-act="back">Verso</button>
+        <button data-act="spin" aria-pressed="true">Girar</button>
+        <button data-act="out" aria-label="Diminuir zoom">−</button>
+        <button data-act="in" aria-label="Aumentar zoom">+</button>
+        <button data-act="photo" id="photoBtn" hidden>Foto real</button>
+      </div>
+      <p class="tag-3d" id="tag3d">Representação 3D ilustrativa — arraste para girar</p>
+    </div>
+    <div class="dlg-info">
+      <p class="eyebrow" id="dlgMeta"></p>
+      <h2 id="dlgTitle"></h2>
+      <p class="milestone" id="dlgMilestone"></p>
+      <div id="dlgBody"></div>
+    </div>
+  </div>
+</dialog>
+
+<script src="vendor/three.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/models.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
